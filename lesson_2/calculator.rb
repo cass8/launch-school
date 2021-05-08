@@ -4,7 +4,7 @@
 # output the result
 
 # answer = Kernel.gets()
-# Kernel.puts(answer) 
+# Kernel.puts(answer)
 
 def prompt(message)
   puts "=> #{message}"
@@ -44,7 +44,6 @@ end
 prompt("Hi #{name}!")
 
 loop do
-
   number1 = ''
 
   loop do
@@ -71,7 +70,6 @@ loop do
     end
   end
 
-
   operator_prompt = <<-MSG
     What operation would you like to perform?
     1) add
@@ -81,7 +79,7 @@ loop do
   MSG
 
   prompt(operator_prompt)
-  
+
   operator = ''
 
   loop do
@@ -97,11 +95,11 @@ loop do
   prompt("#{operation_to_message(operator)} the two numbers..")
 
   result = case operator
-            when '1' then result = number1.to_i() + number2.to_i()
-            when '2' then result = number1.to_i() - number2.to_i()
-            when '3' then result = number1.to_i() * number2.to_i()
-            when '4' then result = number1.to_f() / number2.to_f()
-          end
+           when '1' then number1.to_i() + number2.to_i()
+           when '2' then number1.to_i() - number2.to_i()
+           when '3' then number1.to_i() * number2.to_i()
+           when '4' then number1.to_f() / number2.to_f()
+           end
 
   prompt("The result is #{result}!")
 
