@@ -36,6 +36,24 @@ def valid_float?(num)
   num.to_f().to_s() == num && num.to_f().positive?()
 end
 
+def y_or_n?(answer)
+  if answer == 'y'
+    true
+  else
+    answer == 'n'
+  end
+end
+
+def clear
+  if Gem.win_platform?
+    system 'cls'
+  else
+    system 'clear'
+  end
+end
+
+clear()
+
 prompt(MESSAGES['welcome'])
 
 name = ''
@@ -48,6 +66,8 @@ loop do
     break
   end
 end
+
+clear()
 
 prompt("Hi #{name}!")
 
@@ -98,6 +118,7 @@ loop do
     end
   end
 
+  clear()
   monthly_interest_rate = (apr.to_f() / 100) / 12
 
   loan_duration_total = (loan_duration_years.to_i() * 12) +
@@ -108,8 +129,18 @@ loop do
 
   prompt("Your monthly payment will be £#{monthly_payment.round(2)}.")
 
-  prompt(MESSAGES['again'])
-  another_calculation = Kernel.gets().chomp()
-  break unless another_calculation.downcase.start_with?('y')
+  another_calculation = ''
+  loop do
+    prompt(MESSAGES['again'])
+    another_calculation = Kernel.gets().chomp().downcase()
+    if y_or_n?(another_calculation)
+      break
+    else
+      prompt(MESSAGES['y_or_n'])
+    end
+  end
+  break unless another_calculation.downcase() == 'y'
+  clear()
 end
+clear()
 prompt(MESSAGES['goodbye'])
