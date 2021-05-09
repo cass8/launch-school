@@ -33,7 +33,7 @@ def valid_loan?(num)
 end
 
 def valid_float?(num)
-  num.to_f().to_s() == num
+  num.to_f().to_s() == num && num.to_f().positive?()
 end
 
 prompt(MESSAGES['welcome'])
